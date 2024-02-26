@@ -10,15 +10,20 @@ void print_square(int size)
 	int lenght = 0;
 	int width;
 
-	while (lenght < size)
+	if (size > 0)
 	{
-		width = size;
-		while (width > 0)
+		while (lenght < size)
 		{
-			_putchar(35);
-			width--;
+			width = size;
+			while (width > 0)
+			{
+				_putchar(35);
+				width--;
+			}
+			_putchar('\n');
+			lenght++;
 		}
-		_putchar('\n');
-		lenght++;
 	}
+	else
+		_putchar('\n');
 }
