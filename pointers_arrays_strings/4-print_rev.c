@@ -15,9 +15,9 @@ void print_rev(char *s)
 		ptr++;
 		size++;
 	}
-	while (s[size - 1] >= 0)
+	while (size > 0)
 	{
-		_putchar(s[size]);
+		_putchar(s[size - 1]);
 		size--;
 	}
 	_putchar('\n');
