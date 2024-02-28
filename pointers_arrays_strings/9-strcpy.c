@@ -16,7 +16,7 @@ char *_strcpy(char *dest, char *src)
 	while (src[size] != '\0')
 		size++;
 
-	while (limit < size)
+	while (limit <= size)
 	{
 		*pointdest = *pointsrc;
 		pointdest++;
