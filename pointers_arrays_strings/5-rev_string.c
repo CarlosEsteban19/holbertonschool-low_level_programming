@@ -17,7 +17,7 @@ void rev_string(char *s)
 
 	limit = size / 2;
 
-	while (*pointer != s[limit])
+	while (size != limit)
 	{
 		ditto = s[size - 1];
 		s[size - 1] = *pointer;
