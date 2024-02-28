@@ -17,6 +17,12 @@ void puts_half(char *str)
 	limit = size / 2;
 	pointer += limit;
 
+	if (size % 2 == 1)
+	{
+		pointer++;
+		size--;
+	}
+
 	while (limit < size)
 	{
 		_putchar(*pointer);
