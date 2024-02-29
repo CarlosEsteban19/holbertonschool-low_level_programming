@@ -9,14 +9,13 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int size;
 	int limit;
-	int path = 0;
 
-	for (limit = 0, size = 0; src[limit] != '\0' && path < n; limit++, size++)
-	{
-		dest[size] = src[limit];
-		path++;
-	}
+	for (limit = 0; src[limit] && limit < n; limit++)
+		dest[limit] = src[limit];
+
+	for (; limit < n; limit++)
+		dest[limit] = '\0';
+
 	return (dest);
 }
