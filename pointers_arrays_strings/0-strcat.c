@@ -17,7 +17,6 @@ char *_strcat(char *dest, char *src)
 	if (dest[size] == '\0')
 	{
 		dest[size] = ' ';
-		size++;
 	}
 
 	for (limit = 0; src[limit] != '\0'; limit++)
