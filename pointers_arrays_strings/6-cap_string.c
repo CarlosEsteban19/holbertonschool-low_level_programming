@@ -7,19 +7,36 @@
  */
 char *cap_string(char *s)
 {
-	char *pointer = s;
+	char *p = s;
 
-	while (*pointer != '\0')
+	if (*p >= 'a' && *p <= 'z')
+		*p -= 32;
+
+	while (*p != '\0')
 	{
-		if (*pointer == ',' || *pointer == '	' || *pointer == ';' || *pointer == '.' || *pointer == '!' || *pointer == '?' || *pointer == '"' || *pointer == '(' || *pointer == ')' || *pointer == '{' || *pointer == '}' || *pointer == ' ' || *pointer == '\n')
+		if (*p == ')' || *p == '{' || *p == '}' || *p == ' ' || *p == '\n')
 		{
-			pointer++;
-			if (*pointer >= 'a' && *pointer <= 'z')
-				*pointer -= 32;
+			p++;
+			if (*p >= 'a' && *p <= 'z')
+				*p -= 32;
+		}
+
+		else if (*p == ',' || *p == '	' || *p == ';' || *p == '.')
+		{
+			p++;
+			if (*p >= 'a' && *p <= 'z')
+				*p -= 32;
+		}
+
+		else if (*p == '!' || *p == '?' || *p == '"' || *p == '(')
+		{
+			p++;
+			if (*p >= 'a' && *p <= 'z')
+				*p -= 32;
 		}
 
 		else
-			pointer++;
+			p++;
 	}
 	return (s);
 }
