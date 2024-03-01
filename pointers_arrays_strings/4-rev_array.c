@@ -14,7 +14,7 @@ void reverse_array(int *a, int n)
 
 	limit = n / 2;
 
-	while (n != limit)
+	while (n > limit)
 	{
 		ditto = a[n - 1];
 		a[n - 1] = *pointer;
