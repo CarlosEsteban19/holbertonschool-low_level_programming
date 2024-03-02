@@ -29,11 +29,11 @@ void print_number(int n)
 	{
 		num = (n / divide) % 10;
 
-		if (digit != 0 || !zeros)
+		if (num != 0 || !zeros)
 		{
 			_putchar(num + '0');
 			zeros = 0;
 		}
-		divisor /= 10;
+		divide /= 10;
 	}
 }
