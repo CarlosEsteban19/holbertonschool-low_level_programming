@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * *str_concat - concatenates two strings into new memory
+ * *string_nconcat - concatenates two strings into new memory
  * @s1: 1st string
  * @s2: 2nd string
  * @n: number of bytes to concatenate from s2
