@@ -9,12 +9,14 @@
 int *array_range(int min, int max)
 {
 	int *pointer;
-	int index;
+	int total, index;
 
 	if (min > max)
 		return (NULL);
 
-	pointer = malloc(1 + max * sizeof(int));
+	total = max - min;
+
+	pointer = malloc((total + 1) * sizeof(int));
 	if (pointer == NULL)
 		return (NULL);
 
