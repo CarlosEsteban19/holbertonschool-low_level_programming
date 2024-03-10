@@ -35,8 +35,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (index1 = 0; s1[index1] != '\0'; index1++)
 		pointer[index1] = s1[index1];
 
-	for (index2 = 0; s2[index2] != '\0'; index1++, index2++)
+	for (index2 = 0; index2 < n; index1++, index2++)
 		pointer[index1] = s2[index2];
+
+	pointer[index1] = '\0';
 
 	return (pointer);
 }
