@@ -3,13 +3,15 @@
 #include <stdarg.h>
 /**
  * print_c - prints chars
+ * @args: source
  */
 void print_c(va_list *args)
 {
 	printf("%c", va_arg(*args, int));
 }
 /**
- * print - prints string
+ * print_s - prints string
+ * @args: source
  */
 void print_s(va_list *args)
 {
@@ -17,19 +19,21 @@ void print_s(va_list *args)
 
 	string = va_arg(*args, char *);
 	if (string == NULL)
-		printf("(nil)");
-	else
-		printf("%s", string);
+		string = "(nil)";
+
+	printf("%s", string);
 }
 /**
  * print_i - prints integer
+ * @args: source
  */
 void print_i(va_list *args)
 {
 	printf("%d", va_arg(*args, int));
 }
-/*
+/**
  * print_f - prints float
+ * @args: source
  */
 void print_f(va_list *args)
 {
@@ -37,7 +41,7 @@ void print_f(va_list *args)
 }
 /**
  * print_all - prints anything
- * @formar: list of types of arguments passed to the function
+ * @format: list of types of arguments passed to the function
  */
 void print_all(const char * const format, ...)
 {
