@@ -56,6 +56,7 @@ void print_all(const char * const format, ...)
 	int i;
 	int j = 0;
 	va_list args;
+	char *separator = "";
 
 	va_start(args, format);
 
@@ -66,7 +67,9 @@ void print_all(const char * const format, ...)
 		{
 			if (*array[i].letra == format[j])
 			{
+				printf("%s", separator);
 				array[i].f(args);
+				separator = ", ";
 			}
 			i++;
 		}
