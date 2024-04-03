@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdlib.h>
 /**
  * get_dnodeint_at_index - returns the nth node of a doubly list
  * @head: beginning of list
@@ -7,14 +8,29 @@
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	unsigned int num = 0;
+	unsigned int limit = 0, num = 0;
+	dlistint_t *ditto;
 
-	while (num < index)
-	{
-		head = head->next;
-		num++;
-	}
-	if (head == NULL)
+	ditto = malloc(sizeof(dlistint_t));
+	if (ditto == NULL)
 		return (NULL);
+
+	if (head != NULL)
+	{
+		ditto = head;
+		while (ditto->next != NULL)
+		{
+			ditto = ditto->next;
+			limit++;
+		}
+	}
+	if (index > limit)
+		return (NULL);
+	else
+	   while (num < index)
+		{
+			head = head->next;
+			num++;
+		}
 	return (head);
 }
