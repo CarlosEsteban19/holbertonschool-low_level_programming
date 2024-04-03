@@ -9,7 +9,7 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int limit = 0, num = 1;
+	unsigned int limit = 1, num = 1;
 	dlistint_t *new, *ditto, *temp;
 
 	new = malloc(sizeof(dlistint_t));
