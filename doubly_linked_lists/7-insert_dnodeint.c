@@ -19,10 +19,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (*h != NULL)
 	{
 		ditto = *h;
-		while (limit < idx)
+		while (limit < idx - 1)
 		{
-			ditto = ditto->next;
 			limit++;
+			ditto = ditto->next;
 		}
 		new->prev = ditto;
 		new->n = n;
