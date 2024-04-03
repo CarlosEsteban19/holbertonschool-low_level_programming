@@ -2,10 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 /**
- * add_node - adds a new node at the beginning of a list
+ * add_dnodeint - adds a new node at the beginning of a list
  * @head: beginning of list
- * @str: new string
- * Return: list
+ * @n: int data for node
+ * Return: beginning of list
  */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
