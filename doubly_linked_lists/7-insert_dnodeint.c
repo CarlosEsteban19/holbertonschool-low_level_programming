@@ -29,7 +29,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 
 	ditto = *h;
-	while (num < idx - 1)
+	while (num < idx)
 	{
 		num++;
 		ditto = ditto->next;
