@@ -16,15 +16,15 @@ int _strlen(const char *s)
 }
 /**
  * add_node - adds a new node at the beginning of a list
- * @head:
- * @str:
+ * @head: beginning of list
+ * @str: new string
  * Return: list
  */
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
 
-	new = malloc(sizeof (list_t));
+	new = malloc(sizeof(list_t));
 	if (new == NULL)
 		return (NULL);
 
