@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		bytesWR = write(fd_to, buffer, bytesRD);
 		if (bytesWR != bytesRD)
 		{
-			dprintf(STDERR_FILENO, "Error: Write to %s failed\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close(fd_from);
 			close(fd_to);
 			return (99);
