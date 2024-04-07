@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		return (98);
 	}
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
