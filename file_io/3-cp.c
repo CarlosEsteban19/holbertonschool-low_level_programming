@@ -7,8 +7,7 @@
  */
 int main(int argc, char *argv[])
 {
-	const char *file_from = argv[1];
-	const char *file_to = argv[2];
+	const char *file_from = argv[1], *file_to = argv[2];
 	int fd_from, fd_to;
 	char buffer[1024];
 	ssize_t bytesRD, bytesWR;
@@ -37,21 +36,19 @@ int main(int argc, char *argv[])
 		if (bytesWR != bytesRD)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			close(fd_from);
-			close(fd_to);
+			close(fd_from), close(fd_to);
 			return (99);
 		}
 	}
 	if (bytesRD == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		close(fd_from);
-		close(fd_to);
+		close(fd_from), close(fd_to);
 		return (98);
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd \n");
 		return (100);
 	}
 	return (0);
