@@ -19,12 +19,15 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	while (*ptr != '\0')
-		len++, ptr++;
+	{
+		len++;
+		ptr++;
+	}
 
 	if (len > 0 && text_content != NULL)
 	{
 		bytesWR = write(fd, text_content, len);
-		if (bytesWR == -1)
+		if (bytesWR != len)
 		{
 			close(fd);
 			return (-1);
