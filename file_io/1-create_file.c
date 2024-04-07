@@ -8,6 +8,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd;
+	char *ptr = text_content;
 	ssize_t bytesWR, len;
 
 	if (filename == NULL)
@@ -17,15 +18,17 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 		return (-1);
 
-	if (text_content != NULL)
-		while (text_content[len] != '\0')
-			len++;
+	while (ptr != '\0')
+		len++, ptr++;
 
-	bytesWR = write(fd, text_content, len);
-	if (bytesWR == -1)
+	if (text_content != NULL)
 	{
-		close(fd);
-		return (-1);
+		bytesWR = write(fd, text_content, len);
+		if (bytesWR == -1)
+		{
+			close(fd);
+			return (-1);
+		}
 	}
 
 	close(fd);
