@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	}
 	if (bytesRD == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Read from file %s failed\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		close(fd_from);
 		close(fd_to);
 		return (98);
