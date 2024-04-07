@@ -18,14 +18,12 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		return (97);
 	}
-
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		return (98);
 	}
-
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd_to == -1)
 	{
@@ -33,7 +31,6 @@ int main(int argc, char *argv[])
 		close(fd_from);
 		return (99);
 	}
-
 	while ((bytesRD = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
 		bytesWR = write(fd_to, buffer, bytesRD);
@@ -45,7 +42,6 @@ int main(int argc, char *argv[])
 			return (99);
 		}
 	}
-
 	if (bytesRD == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Read from file %s failed\n", file_from);
@@ -53,13 +49,15 @@ int main(int argc, char *argv[])
 		close(fd_to);
 		return (98);
 	}
-
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close file descriptors\n");
 		return (100);
 	}
-
-	return 0;
+	if (chmod(file_to, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't set permissions on file %s\n", file_to);
+		return (99);
+	}
+	return (0);
 }
-
