@@ -54,10 +54,5 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't close file descriptors\n");
 		return (100);
 	}
-	if (chmod(file_to, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't set permissions on file %s\n", file_to);
-		return (99);
-	}
 	return (0);
 }
