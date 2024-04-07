@@ -25,7 +25,7 @@ int print_error(const char *msg, int code, int fd_from, int fd_to)
 int main(int argc, char *argv[])
 {
 	const char *file_from = argv[1], *file_to = argv[2];
-	int fd_from, fd_to;
+	int fd_from = -1, fd_to = -1;
 	char buffer[1024];
 	ssize_t bytesRD, bytesWR;
 
