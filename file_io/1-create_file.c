@@ -21,7 +21,7 @@ int create_file(const char *filename, char *text_content)
 	while (*ptr != '\0')
 		len++, ptr++;
 
-	if (text_content != NULL)
+	if (len > 0 && text_content != NULL)
 	{
 		bytesWR = write(fd, text_content, len);
 		if (bytesWR == -1)
