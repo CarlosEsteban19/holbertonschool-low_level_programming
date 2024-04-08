@@ -16,11 +16,6 @@ int main(int argc, char *argv[])
 		return (97);
 	}
 	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		return (98);
-	}
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_to == -1)
@@ -37,7 +32,7 @@ int main(int argc, char *argv[])
 			return (99);
 		}
 	}
-	if (bytesRD == -1)
+	if (bytesRD == -1 || fd_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		return (98);
