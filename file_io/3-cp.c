@@ -39,11 +39,6 @@ int main(int argc, char *argv[])
 			return (99);
 		}
 	}
-	if (bytesRD == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		return (98);
-	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd \n");
