@@ -7,10 +7,8 @@
  */
 int main(int argc, char *argv[])
 {
-	const char *file_from = argv[1], *file_to = argv[2];
-	int fd_from, fd_to;
+	int fd_from, fd_to, bytesRD, bytesWR;
 	char buffer[1024];
-	ssize_t bytesRD, bytesWR;
 
 	if (argc != 3)
 	{
@@ -20,14 +18,14 @@ int main(int argc, char *argv[])
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		return (98);
 	}
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_to == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		return (99);
 	}
 	while ((bytesRD = read(fd_from, buffer, sizeof(buffer))) > 0)
@@ -35,9 +33,14 @@ int main(int argc, char *argv[])
 		bytesWR = write(fd_to, buffer, bytesRD);
 		if (bytesWR != bytesRD)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			return (99);
 		}
+	}
+	if (bytesRD == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		return (98);
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
